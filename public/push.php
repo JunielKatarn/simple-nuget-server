@@ -88,6 +88,10 @@ if (!file_exists($dir)) {
 if (!rename($upload_filename, $path)) {
 	api_error('500', 'Could not save file');
 }
+// This is a problem, but fixes the comflict between using Apache in the docker and Nginx as proxy.
+if (!chmod($path, 0644)) {
+	api_error('500', 'Could not chmod file');
+}
 
 // Update database
 DB::insertOrUpdatePackage([
