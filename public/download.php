@@ -9,4 +9,8 @@ DB::incrementDownloadCount($id, $version);
 
 header('Content-Type: application/zip');
 header('Content-Disposition: attachment; filename="' . $id . '.' . $version . '.nupkg"');
-header('X-Accel-Redirect: ' . $path);
+
+if (strlen(Config::$packageUrl) > 0)
+	header('Location: ' . $path);
+else
+	header('X-Accel-Redirect: ' . $path);	

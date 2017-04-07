@@ -54,5 +54,8 @@ function get_package_path($id, $version) {
 	}
 
 	// This is safe - These values have been validated via validateIdAndVersion above
-	return Config::$packageDir . $id . '/' . $version . '.nupkg';
+	if (strlen(Config::$packageUrl) > 0)
+		return Config::$packageUrl . $id . '/' . $version . '.nupkg';
+	else
+		return Config::$packageDir . $id . '/' . $version . '.nupkg';		
 }
