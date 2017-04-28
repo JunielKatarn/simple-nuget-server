@@ -7,8 +7,10 @@ class Config {
 	public static $dbPassword;
 	public static $apiKey;
 	public static $packageDir;
+	public static $packageUrl;
 }
 
 Config::$dbName = 'sqlite:../db/packages.sqlite3';
 Config::$packageDir = __DIR__ . '/../packagefiles/';
+Config::$packageUrl = '';
 Config::$apiKey = 'ChangeThisKey';
